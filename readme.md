@@ -9,18 +9,6 @@ This demo showcases the authentication flow of the app, explaining how users log
 - **Personalized Home Screen** (Fetches and displays user details)
 - **First-Time User Prompt** (Requests user name if not available)
 
-## Flow Diagram
-```mermaid
-graph TD;
-    A[User Opens App] -->|Logged In| B[Home Screen];
-    A -->|Not Logged In| C[Login Screen];
-    B --> D[Fetch User Name from Firestore];
-    C -->|User Enters Phone Number| E[Authenticate via OTP];
-    E -->|Success| F[First-Time Login Check];
-    F -->|First-Time| G[Show Dialog to Enter Name];
-    F -->|Returning User| H[Proceed to Home Screen];
-    G -->|User Saves Name| I[Store in Firestore and Go to Home Screen];
-```
 
 ## App Flow
 ### 1. **Launching the App**
