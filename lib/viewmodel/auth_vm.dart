@@ -64,6 +64,7 @@ class AuthVM extends ChangeNotifier {
         customPrint(e.toString());
       }
     } else {
+      Future.delayed(Duration(seconds: 2));
       navigatorKey.currentState?.pushReplacementNamed(PhoneNumberPage.name);
     }
   }
@@ -107,10 +108,10 @@ class AuthVM extends ChangeNotifier {
     // Send Code
     try {
       customPrint(
-          "OTP SENT ====>> $dialCode ${phoneNumber.replaceAll(" ", "")}");
+          "OTP SENT ====>> +$dialCode${phoneNumber.replaceAll(" ", "")}");
       setPhonePageLoading(true);
       FirebaseAuth.instance.verifyPhoneNumber(
-        phoneNumber: "$dialCode${phoneNumber.replaceAll(" ", "")}",
+        phoneNumber: "+$dialCode${phoneNumber.replaceAll(" ", "")}",
         codeSent: (verificationId, forceResendingToken) {
           customPrint("verificationId $verificationId");
           customPrint("forceResendingToken === $forceResendingToken");
